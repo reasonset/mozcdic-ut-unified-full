@@ -148,9 +148,6 @@ end
 # main
 # ==============================================================================
 
-`wget -nc https://github.com/WorksApplications/SudachiDict/raw/develop/src/main/text/core_lex.csv`
-`wget -nc https://github.com/WorksApplications/SudachiDict/raw/develop/src/main/text/notcore_lex.csv`
-
 $filename = "core_lex.csv"
 $dicname = "mozcdic-sudachidict-core.txt"
 convert_sudachidict_to_mozc
