@@ -73,9 +73,6 @@ end
 # main
 # ==============================================================================
 
-`wget -nc http://openlab.jp/skk/dic/SKK-JISYO.L.gz`
-`rm -f SKK-JISYO.L`
-`gzip -dk SKK-JISYO.L.gz`
 $filename = "SKK-JISYO.L"
 $dicname = "mozcdic-skkdic.txt"
 

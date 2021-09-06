@@ -223,8 +223,6 @@ end
 jawiki = "jawiki-latest-pages-articles.xml.bz2"
 mozcdic = "jawiki-ut.txt"
 
-`wget -nc https://dumps.wikimedia.org/jawiki/latest/#{jawiki}`
-
 reader = Bzip2::FFI::Reader.open(jawiki)
 $dicfile = File.new(mozcdic, "w")
 core_num = `grep cpu.cores /proc/cpuinfo`.chomp.split(": ")[-1].to_i - 1

@@ -16,7 +16,7 @@ sudachidict="true"
 # Make each dictionary
 # ==============================================================================
 
-function clean() {
+clean() {
 dirs -c
 echo ":: Cleaning up working directory ..."
 find "$PWD" -name "mozcdic-ut.txt" -delete
@@ -26,7 +26,7 @@ find .. -type f \( -name "*.zip" -o -name "*.gz" \) -delete
 find ../mozc -type d -name "mozc-master" -exec rm -r '{}' \;
 }
 
-function get-mozc-dict-defs() {
+get-mozc-dict-defs() {
 echo ":: Fetching the latest mozc dictionary definitions ..."
 pushd ../mozc &>/dev/null || exit
 # https://stackoverflow.com/a/18194523
@@ -37,7 +37,7 @@ rm -rf dictionary_oss
 popd &>/dev/null || exit
 }
 
-function get-and-process-alt-cannadic() {
+get-and-process-alt-cannadic() {
 echo ":: Checking for revised canna dictionary file ..."
 # acc = Academic Computer Club, Umeå University ウメオ, スウェーデン
 # bfsu = 北京外国語大学 北京, 中国
@@ -93,7 +93,7 @@ if [[ $altcannadic = "true" ]];
 fi
 } 
 
-function get-and-process-edict() {
+get-and-process-edict() {
 if [[ $edict = "true" ]]; 
   then
   echo ":: Checking for Jim Breen's EDICT2 file ..."
@@ -112,7 +112,7 @@ if [[ $edict = "true" ]];
 fi
 }
 
-function get-and-process-jawiki-titles() {
+get-and-process-jawiki-titles() {
 local _titles_file="jawiki-latest-all-titles-in-ns0"
 local _md5sum_file="jawiki-latest-md5sums.txt"
 local _url="https://dumps.wikimedia.org/jawiki/latest"
@@ -138,7 +138,7 @@ fi
 popd &>/dev/null || exit
 }
 
-function get-and-process-jawiki-articles() {
+get-and-process-jawiki-articles() {
 local _articles_file="jawiki-latest-pages-articles.xml.bz2"
 local _md5sum_file="jawiki-latest-md5sums.txt"
 local _url="https://dumps.wikimedia.org/jawiki/latest"
@@ -169,7 +169,7 @@ if [[ $jawikiarticles = "true" ]]; then
 fi
 }
 
-function process-jinmei() {
+process-jinmei() {
 if [[ $jinmeiut = "true" ]]; 
         then
                 echo ":: Processing jinmei for Japanese names ..."
@@ -180,7 +180,7 @@ if [[ $jinmeiut = "true" ]];
 fi
 }
 
-function get-and-process-neologd() {
+get-and-process-neologd() {
 local _url="https://github.com/neologd/mecab-ipadic-neologd/raw/master/seed"
 local _file="mecab-user-dict-seed"
 local _version="20200910"
@@ -202,7 +202,7 @@ if [[ $neologd = "true" ]]; then
 fi
 }
 
-function get-and-process-nicoime() {
+get-and-process-nicoime() {
 local _filename="nicoime.zip"
 local _url="http://public.s3.tkido.com.s3-website-ap-northeast-1.amazonaws.com"
 if [[ $nicoime = "true" ]]; 
@@ -224,7 +224,7 @@ if [[ $nicoime = "true" ]];
 fi
 }
 
-function get-and-process-skk() {
+get-and-process-skk() {
 local _filename="SKK-JISYO.L.gz"
 local _url="http://openlab.jp/skk/dic"
 if [[ $skk = "true" ]]; 
@@ -245,7 +245,7 @@ if [[ $skk = "true" ]];
 fi
 }
 
-function get-and-process-sudachidict() {
+get-and-process-sudachidict() {
 local _filename="core_lex.csv"
 local
 _url="https://github.com/WorksApplications/SudachiDict/raw/develop/src/main/text/"
@@ -265,17 +265,17 @@ if [[ $sudachidict = "true" ]];
             curl --output "not$_filename" --location "$_url/not$_filename"
         fi
         echo ":: Processing Sudachi Dictionary files ..."
-        ruby convert-sudachiduct-to-mozc.rb
+        ruby convert-sudachidict-to-mozc.rb
         ruby ../src/filter-entries.rb mozcdic-sudachidict-*.txt
         cat mozcdic-sudachidict-*.txt >> ../src/mozcdic-ut.txt
         popd &>/dev/null || exit
 fi
 }
 
-function fetch_and_process-Japan-postcode() {
+fetch_and_process-Japan-postcode() {
 local _filename="ken_all.zip"
 local _url="https://www.post.japanpost.jp/zipcode/dl/kogaki/zip"
-echo ":: Checking Japan postal codes file  ..."
+echo ":: Checking for Japan postal codes file  ..."
 pushd "../zipcode" &>/dev/null || exit
 find "$PWD" -type f -name "KEN_ALL.CSV" -delete
         if ! [ -f "$_filename" ];
@@ -292,7 +292,7 @@ find "$PWD" -type f -name "KEN_ALL.CSV" -delete
 popd &>/dev/null || exit
 }
 
-function extract_new_entry_and_apply_jawiki_costs() {
+extract_new_entry_and_apply_jawiki_costs() {
 cd ../src/
 
 
@@ -307,7 +307,7 @@ rm -f ../mozcdic*-ut-*.txt
 mv mozcdic-ut.txt.extracted ../mozcdic-ut-$UTDICDATE.txt
 }
 
-function make_mozcdic-ut_pkg() {
+make_mozcdic-ut_pkg() {
 # ==============================================================================
 # Make a mozcdic-ut package
 # ==============================================================================
@@ -321,7 +321,7 @@ rsync -av mozcdic-ut-dev/* mozcdic-ut-$UTDICDATE --exclude=id.def \
 rm -f mozcdic-ut-$UTDICDATE/*/mozcdic*.txt*
 }
 
-function main() {
+main() {
 clean
 get-mozc-dict-defs
 get-and-process-alt-cannadic

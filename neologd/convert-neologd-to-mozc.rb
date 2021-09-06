@@ -133,14 +133,11 @@ end
 # ==============================================================================
 # main
 # ==============================================================================
-
 require 'open-uri'
 url = "https://github.com/neologd/mecab-ipadic-neologd/tree/master/seed"
 neologdver = URI.open(url).read.split("mecab-user-dict-seed.")[1]
 neologdver = neologdver.split(".csv.xz")[0]
 
-`wget -nc https://github.com/neologd/mecab-ipadic-neologd/raw/master/seed/mecab-user-dict-seed.#{neologdver}.csv.xz`
-`7z x -aos mecab-user-dict-seed.#{neologdver}.csv.xz`
 $filename = "mecab-user-dict-seed.#{neologdver}.csv"
 $dicname = "mozcdic-neologd.txt"
 
