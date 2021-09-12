@@ -109,10 +109,10 @@ end
 # ==============================================================================
 
 `rm -f edict2`
-`wget -nc http://ftp.monash.edu/pub/nihongo/edict2.gz`
+`wget -N http://ftp.edrdg.org/pub/Nihongo/edict2.gz`
 `gzip -dk edict2.gz`
 $filename = "edict2"
-$dicname = "mozcdic-edict2.txt"
+$dicname = "mozcdic-ut-edict2.txt"
 
 modify_edict2
 

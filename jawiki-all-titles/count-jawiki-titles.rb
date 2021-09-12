@@ -61,8 +61,7 @@ end
 # main
 # ==============================================================================
 
-`rm -f jawiki-latest-all-titles-in-ns0`
-`wget -nc https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz`
+`wget -N https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz`
 $filename = "jawiki-latest-all-titles-in-ns0.gz"
 $dicname = "jawiki-latest-all-titles-in-ns0.counts"
 

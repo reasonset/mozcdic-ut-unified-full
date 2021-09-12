@@ -152,9 +152,9 @@ end
 `wget -nc https://github.com/WorksApplications/SudachiDict/raw/develop/src/main/text/notcore_lex.csv`
 
 $filename = "core_lex.csv"
-$dicname = "mozcdic-sudachidict-core.txt"
+$dicname = "mozcdic-ut-sudachidict-core.txt"
 convert_sudachidict_to_mozc
 
 $filename = "notcore_lex.csv"
-$dicname = "mozcdic-sudachidict-notcore.txt"
+$dicname = "mozcdic-ut-sudachidict-notcore.txt"
 convert_sudachidict_to_mozc

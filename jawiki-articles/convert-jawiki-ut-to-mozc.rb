@@ -39,7 +39,7 @@ end
 # ==============================================================================
 
 $filename = "jawiki-ut.txt"
-$dicname = "mozcdic-jawiki.txt"
+$dicname = "mozcdic-ut-jawiki.txt"
 
 if FileTest.exist?("jawiki-ut.txt") == false
 	`ruby get-entries-from-jawiki-articles.rb`

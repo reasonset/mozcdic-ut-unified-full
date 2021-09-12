@@ -109,7 +109,7 @@ end
 # ==============================================================================
 
 $filename = "jinmei-ut.txt"
-$dicname = "mozcdic-jinmei-ut.txt"
+$dicname = "mozcdic-ut-jinmei.txt"
 
 modify_jinmei
 
